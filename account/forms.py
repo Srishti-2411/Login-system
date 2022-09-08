@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User
-from django.db import models  
+from .models import Blog, User
+from django.db import models 
+from django.forms import ModelForm 
  
 
 class LoginForm(forms.Form):
@@ -81,3 +82,13 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('Firstname','Lastname','username', 'email', 'password1', 'password2','Address' ,'is_admin', 'is_doctor', 'is_patient')
+
+class Blog_form(ModelForm):
+    class Meta:
+        model= Blog
+        fields=("__all__")
+
+class Blog_form(ModelForm):
+    class Meta:
+        model= Blog
+        fields=("__all__")

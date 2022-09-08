@@ -1,8 +1,10 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 
 from django.shortcuts import render, redirect
-from .forms import SignUpForm, LoginForm
+from .forms import *
 from django.contrib.auth import authenticate, login
+from .models import *
  
  
 # Create your views here.
@@ -62,4 +64,53 @@ def patient(request):
 
 def doctor(request):
     return render(request,'doctor.html')
- 
+
+def create_blog(request):
+    doctors = User.objects.all().filter(is_doctor=True)
+    print(doctors)
+    print(request.user)
+    print(request)
+    if request.user in doctors:
+        print("test")
+        print(request.method)
+        if request.method == "POST":
+            form = Blog_form(request.POST)
+            if form.is_valid():
+                print("before save")
+                form.save()
+                print("after save")
+
+            return render(request, 'createblog.html', {"form":form})
+        else:
+            form = Blog_form()
+            return render(request, 'createblog.html', {"form":form})
+    else:
+        print("no doctor")
+        return HttpResponse("<h1>no doctor</h1>")
+
+def show_blogs(request):
+    blogs = Blog.objects.all().filter(draft = False)
+    print(blogs)
+    return render(request,'showblogs.html',{'blogs':blogs})
+    
+
+def update(request,id):
+    doctors = User.objects.all().filter(is_doctor=True)
+    blog = Blog.objects.all().filter(id = id)
+    print(doctors)
+    print(request.user)
+    print(request)
+    if request.user in doctors:
+        print("test")
+        print(request.method)
+        if request.method == "POST":
+            form = Blog_form(request.POST, instance=blog)
+            if form.is_valid():
+                print("before save")
+                form.save()
+                print("after save")
+                return render(request,'updateblogs.html',{'form':form})
+        else:
+
+            form = Blog_form(instance=blog)
+            return render(request,'updateblogs.html',{'form':form})
