@@ -94,23 +94,29 @@ def show_blogs(request):
     return render(request,'showblogs.html',{'blogs':blogs})
     
 
-def update(request,id):
-    doctors = User.objects.all().filter(is_doctor=True)
-    blog = Blog.objects.all().filter(id = id)
-    print(doctors)
-    print(request.user)
-    print(request)
-    if request.user in doctors:
-        print("test")
-        print(request.method)
-        if request.method == "POST":
-            form = Blog_form(request.POST, instance=blog)
-            if form.is_valid():
-                print("before save")
-                form.save()
-                print("after save")
-                return render(request,'updateblogs.html',{'form':form})
-        else:
+# def update(request,id):
+#     doctors = User.objects.all().filter(is_doctor=True)
+#     blog = Blog.objects.all().filter(id = id)
+#     print(doctors)
+#     print(request.user)
+#     print(request)
+#     if request.user in doctors:
+#         print("test")
+#         print(request.method)
+#         if request.method == "POST":
+#             form = Blog_form(request.POST, instance=blog)
+#             if form.is_valid():
+#                 print("before save")
+#                 form.save()
+#                 print("after save")
+#                 return render(request,'updateblogs.html',{'form':form})
+#         else:
 
-            form = Blog_form(instance=blog)
-            return render(request,'updateblogs.html',{'form':form})
+#             form = Blog_form(instance=blog)
+#             return render(request,'updateblogs.html',{'form':form})
+
+def book_app(request):
+    return render(request,'bookapp.html')
+
+def details_appointment(request):
+    return render(request, 'details_app.html')

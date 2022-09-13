@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Blog, User
+from .models import *
 from django.db import models 
 from django.forms import ModelForm 
  
@@ -92,3 +92,4 @@ class Blog_form(ModelForm):
     class Meta:
         model= Blog
         fields=("__all__")
+

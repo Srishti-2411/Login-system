@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Book appointment!</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <form action="action_page.php">
+            <div class="container">
+            <h1>Book your appointment here!</h1>
+            
+
+            <form action="/action_page.php">
+            <label for="cars">Required speciality:</label>
+            <select id="cars" name="cars">
+                <option value="volvo">Cardiologist</option>
+                <option value="saab">Dental</option>
+                <option value="fiat">Surgeon</option>
+                <option value="audi">neurologist</option>
+            </select>
+            
+            </form>
+
+            <hr>
+
+          
+            
+
+                <form action="/action_page.php">
+                    <label for="birthday">Date of appointment:</label>
+                    <input type="date" id="birthday" name="birthday">
+                    
+                </form>
+          
+                
+                <form action="/action_page.php">
+                  <label for="appt">Select a time for appointment:</label>
+                  <input type="time" id="appt" name="appt">
+                 
+                </form>
+            <hr>
+          
+            
+            <button class="btn btn-pill text-white btn-block btn-primary"><a href="{% url 'details_app' %}">Confirm</a></button></div>
+            </div>
+          
+            
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script src="" async defer></script>
+    </body>
+</html>
