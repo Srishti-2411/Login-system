@@ -83,13 +83,7 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('Firstname','Lastname','username', 'email', 'password1', 'password2','Address' ,'is_admin', 'is_doctor', 'is_patient')
 
-class Blog_form(ModelForm):
-    class Meta:
-        model= Blog
-        fields=("__all__")
 
-class Blog_form(ModelForm):
-    class Meta:
-        model= Blog
-        fields=("__all__")
+
+
 
